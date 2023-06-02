@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .selected {
+      background: #0f0;
+    }
+
+    li {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  Кликни на элемент списка, чтобы выделить его.
+  <br>
+
+  <ul id="ul">
+    <li>Кристофер Робин</li>
+    <li>Винни Пух</li>
+    <li>Тигра</li>
+    <li>Кенга</li>
+    <li>Кролик. Просто Кролик.</li>
+  </ul>
+
+  <script>
+    const ul = document.getElementById('ul')
+    const lis = ul.querySelectorAll('li')
+    ul.addEventListener('click', (e)=> {
+      if (e.target == e.currentTarget) {return false }
+      console.log(e.target !== e.currentTarget)
+      lis.forEach(elem => {
+        elem.onmousedown = (e) => {e.preventDefault()}
+        elem.classList.remove('selected')
+      })
+      e.target.classList.add('selected')
+    })
+
+    let form = document.createElement('form');
+    form.action = 'https://google.com/search';
+    form.method = 'GET';
+
+    form.innerHTML = '<input name="q" value="test">';
+
+    // перед отправкой формы, её нужно вставить в документ
+    document.body.append(form);
+
+    let arr = ['a' , 'b', 'c', 'd']
+    arr.forEach( i => console.log(i))
+
+    // form.submit();
+
+
+  </script>
+
+</body>
+</html>
